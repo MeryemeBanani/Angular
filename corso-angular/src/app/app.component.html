@@ -1,0 +1,89 @@
+<div class="container my-5">
+  <div class="card shadow p-4">
+    <h2 class="mb-4 text-center">Compila il Curriculum</h2>
+
+    <form [formGroup]="curriculumForm" (ngSubmit)="generaPDF()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="nome" class="form-label">Nome</label>
+          <input id="nome" formControlName="nome" type="text" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+          <label for="cognome" class="form-label">Cognome</label>
+          <input id="cognome" formControlName="cognome" type="text" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" formControlName="email" type="email" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+          <label for="telefono" class="form-label">Telefono</label>
+          <input id="telefono" formControlName="telefono" type="tel" class="form-control" />
+        </div>
+
+        <div class="col-12">
+          <label for="indirizzo" class="form-label">Indirizzo</label>
+          <input id="indirizzo" formControlName="indirizzo" type="text" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+          <label for="dataNascita" class="form-label">Data di Nascita</label>
+          <input id="dataNascita" formControlName="dataNascita" type="date" class="form-control" />
+        </div>
+
+        <div class="col-12">
+          <label for="esperienze" class="form-label">Esperienze Lavorative</label>
+          <textarea id="esperienze" formControlName="esperienze" rows="3" class="form-control"></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="formazione" class="form-label">Formazione</label>
+          <textarea id="formazione" formControlName="formazione" rows="3" class="form-control"></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="competenze" class="form-label">Competenze</label>
+          <textarea id="competenze" formControlName="competenze" rows="3" class="form-control"></textarea>
+        </div>
+
+        <div class="col-12 text-center mt-4">
+          <button type="submit" class="btn btn-primary">Genera Curriculum</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div #pdfContent class="container my-5">
+  <div class="card p-4 shadow">
+    <h1 class="text-center mb-4">Curriculum Vitae</h1>
+
+    <section class="mb-3">
+      <h5>Informazioni Personali</h5>
+      <p><strong>Nome:</strong> {{ curriculumForm.value.nome }} {{ curriculumForm.value.cognome }}</p>
+      <p><strong>Email:</strong> {{ curriculumForm.value.email }}</p>
+      <p><strong>Telefono:</strong> {{ curriculumForm.value.telefono }}</p>
+      <p><strong>Indirizzo:</strong> {{ curriculumForm.value.indirizzo }}</p>
+      <p><strong>Data di Nascita:</strong> {{ curriculumForm.value.dataNascita }}</p>
+    </section>
+
+    <section class="mb-3">
+      <h5>Esperienza Professionale</h5>
+      <p>{{ curriculumForm.value.esperienze }}</p>
+    </section>
+
+    <section class="mb-3">
+      <h5>Istruzione e Formazione</h5>
+      <p>{{ curriculumForm.value.formazione }}</p>
+    </section>
+
+    <section class="mb-3">
+      <h5>Competenze</h5>
+      <p>{{ curriculumForm.value.competenze }}</p>
+    </section>
+  </div>
+</div>
+
